@@ -1,22 +1,28 @@
 #include <iostream>
 #include <string>
 #include "Conta.hpp"
+#include "ContaPoupanca.hpp"
 #include "Titular.hpp"
 #include "Cpf.hpp"
+#include "Funcionario.hpp"
 
 using namespace std;
+
+void realizaSaque(Conta& conta) {
+	conta.sacar(20);
+}
 
 int main()
 {
 	Titular umTitular(Cpf("01234567899"), "Marcio");
-	Conta umaConta("00001", umTitular);
+	ContaPoupanca umaConta("00001", umTitular);
 	umaConta.depositar(500);
-	umaConta.sacar(200);
+	realizaSaque(umaConta);
 	umaConta.exibeDadosConta();
 
-	Conta umaOutraConta("00002", Titular(Cpf("9876543210"), "Joseph"));
+	ContaPoupanca umaOutraConta("00002", Titular(Cpf("9876543210"), "Joseph"));
 	umaOutraConta.depositar(200);
-	umaOutraConta.sacar(50);
+	realizaSaque(umaOutraConta);
 	umaOutraConta.exibeDadosConta();
 
 	// passando uma string pro construtor de Cpf (conversão implícita)
@@ -25,6 +31,9 @@ int main()
 	maisUmaConta.exibeDadosConta();
 
 	cout << "Numero de contas: " << Conta::recuperaNumeroDeContas() << endl;
+
+	Funcionario funcionario(Cpf("0998877665"), "Funcionario teste", 1000);
+	cout << "Nome do funcionario: " << funcionario.recuperaNome() << endl;
 
 	return 0;
 }

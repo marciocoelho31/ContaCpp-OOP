@@ -127,11 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ContaPoupanca.cpp" />
     <ClCompile Include="Cpf.cpp" />
+    <ClCompile Include="Funcionario.cpp" />
+    <ClCompile Include="Pessoa.cpp" />
     <ClCompile Include="Titular.cpp" />
     <ClInclude Include="Conta.hpp" />
     <ClCompile Include="main.cpp" />
+    <ClInclude Include="ContaPoupanca.hpp" />
     <ClInclude Include="Cpf.hpp" />
+    <ClInclude Include="Funcionario.hpp" />
+    <ClInclude Include="Pessoa.hpp" />
     <ClInclude Include="Titular.hpp" />
   </ItemGroup>
   <ItemGroup>

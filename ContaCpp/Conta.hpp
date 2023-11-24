@@ -11,6 +11,7 @@ public:
 private:
 	std::string numeroConta;
 	Titular titular;
+protected:
 	float saldo;
 
 public:
