@@ -2,6 +2,7 @@
 #include <string>
 #include "Titular.hpp"
 
+// classe abstrata em C++ é aquela que possui um ou mais métodos puramente virtuais (ver no final)
 class Conta {
 private:
 	static int numeroDeContas;
@@ -25,4 +26,8 @@ public:
 
 	std::string recuperaNumeroConta() const;
 	float recuperaSaldo() const;
+
+	// metodo virtual pode ser definido na classe base ou nas derivadas - perde um pouco da performance
+	virtual float taxaDeSaque() const = 0;
+	// = 0 ---> método puramente virtual (abstrato) - não tem implementação na classe base
 };

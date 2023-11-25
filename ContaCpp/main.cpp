@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Conta.hpp"
+#include "ContaCorrente.hpp"
 #include "ContaPoupanca.hpp"
 #include "Titular.hpp"
 #include "Cpf.hpp"
@@ -20,14 +21,14 @@ int main()
 	realizaSaque(umaConta);
 	umaConta.exibeDadosConta();
 
-	ContaPoupanca umaOutraConta("00002", Titular(Cpf("9876543210"), "Joseph"));
+	ContaCorrente umaOutraConta("00002", Titular(Cpf("9876543210"), "Joseph"));
 	umaOutraConta.depositar(200);
 	realizaSaque(umaOutraConta);
 	umaOutraConta.exibeDadosConta();
 
 	// passando uma string pro construtor de Cpf (conversão implícita)
 	// para evitar, usar : explicit Cpf(std::string numero);
-	Conta maisUmaConta("00003", Titular(string("030303030303"), "Paulo"));
+	ContaCorrente maisUmaConta("00003", Titular(string("030303030303"), "Paulo"));
 	maisUmaConta.exibeDadosConta();
 
 	cout << "Numero de contas: " << Conta::recuperaNumeroDeContas() << endl;
