@@ -45,6 +45,9 @@
     <ClCompile Include="Gerente.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Autenticavel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Conta.hpp">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Gerente.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Autenticavel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
