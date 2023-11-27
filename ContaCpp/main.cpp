@@ -6,6 +6,8 @@
 #include "Titular.hpp"
 #include "Cpf.hpp"
 #include "Funcionario.hpp"
+#include "Gerente.hpp"
+#include "Caixa.hpp"
 
 using namespace std;
 
@@ -17,24 +19,34 @@ int main()
 {
 	Titular umTitular(Cpf("01234567899"), "Marcio");
 	ContaPoupanca umaConta("00001", umTitular);
-	umaConta.depositar(500);
-	realizaSaque(umaConta);
+	//realizaSaque(umaConta);
+	cout << "Saldo conta poupanca " << endl;
 	umaConta.exibeDadosConta();
 
 	ContaCorrente umaOutraConta("00002", Titular(Cpf("9876543210"), "Joseph"));
-	umaOutraConta.depositar(200);
-	realizaSaque(umaOutraConta);
+	cout << "Depositando 300 na corrente" << endl;
+	umaOutraConta.depositar(300);
+	cout << "Saldo conta corrente " << endl;
 	umaOutraConta.exibeDadosConta();
+
+	cout << "Transferindo 250 de corrente pra poupanca" << endl;
+	umaOutraConta.transferePara(umaConta, 250);
+
+	cout << "Saldo conta corrente " << endl;
+	umaOutraConta.exibeDadosConta();
+
+	cout << "Saldo conta poupanca " << endl;
+	umaConta.exibeDadosConta();
 
 	// passando uma string pro construtor de Cpf (conversão implícita)
 	// para evitar, usar : explicit Cpf(std::string numero);
 	ContaCorrente maisUmaConta("00003", Titular(string("030303030303"), "Paulo"));
-	maisUmaConta.exibeDadosConta();
+	//maisUmaConta.exibeDadosConta();
 
-	cout << "Numero de contas: " << Conta::recuperaNumeroDeContas() << endl;
+	//cout << "Numero de contas: " << Conta::recuperaNumeroDeContas() << endl;
 
-	Funcionario funcionario(Cpf("0998877665"), "Funcionario teste", 1000);
-	cout << "Nome do funcionario: " << funcionario.recuperaNome() << endl;
+	Gerente gerente(Cpf("0998877665"), "Funcionario teste", 1000);
+	cout << "Nome do gerente: " << gerente.recuperaNome() << endl;
 
 	return 0;
 }

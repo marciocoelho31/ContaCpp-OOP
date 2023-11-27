@@ -8,5 +8,6 @@ class ContaCorrente final : public Conta
 public:
 	ContaCorrente(std::string numeroConta, Titular titular);
 	float taxaDeSaque() const override;
+	void transferePara(Conta& destino, float valor);
 };
 

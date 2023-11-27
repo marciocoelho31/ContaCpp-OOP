@@ -39,6 +39,12 @@
     <ClCompile Include="ContaCorrente.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Caixa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gerente.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Conta.hpp">
@@ -60,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ContaCorrente.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Caixa.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Gerente.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
