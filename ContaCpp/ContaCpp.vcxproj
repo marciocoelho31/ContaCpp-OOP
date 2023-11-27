@@ -132,6 +132,7 @@
     <ClCompile Include="ContaCorrente.cpp" />
     <ClCompile Include="ContaPoupanca.cpp" />
     <ClCompile Include="Cpf.cpp" />
+    <ClCompile Include="DiaDaSemana.cpp" />
     <ClCompile Include="Funcionario.cpp" />
     <ClCompile Include="Gerente.cpp" />
     <ClCompile Include="Pessoa.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="ContaCorrente.hpp" />
     <ClInclude Include="ContaPoupanca.hpp" />
     <ClInclude Include="Cpf.hpp" />
+    <ClInclude Include="DiaDaSemana.hpp" />
     <ClInclude Include="Funcionario.hpp" />
     <ClInclude Include="Gerente.hpp" />
     <ClInclude Include="Pessoa.hpp" />

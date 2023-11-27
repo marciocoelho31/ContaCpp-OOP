@@ -55,7 +55,13 @@ int main()
 
 	//cout << "Numero de contas: " << Conta::recuperaNumeroDeContas() << endl;
 
-	Gerente gerente(Cpf("0998877665"), "Funcionario teste", 1000, "senhagerente");
+	Gerente gerente(
+		Cpf("0998877665"), 
+		"Gerente teste", 
+		1000, 
+		DiaDaSemana::Terca, 
+		"senhagerente"
+	);
 	cout << "Nome do gerente: " << gerente.recuperaNome() << endl;
 
 	return 0;

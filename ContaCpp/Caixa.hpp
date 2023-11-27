@@ -3,7 +3,7 @@
 class Caixa final : public Funcionario
 {
 public:
-    Caixa(Cpf cpf, std::string nome, float salario);
+    Caixa(Cpf cpf, std::string nome, float salario, DiaDaSemana diaDoPagto);
     float bonificacao() const;
 };
 
