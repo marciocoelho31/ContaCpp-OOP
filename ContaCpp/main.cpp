@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <utility>
 #include "Conta.hpp"
 #include "ContaCorrente.hpp"
 #include "ContaPoupanca.hpp"
@@ -12,7 +13,10 @@
 using namespace std;
 
 void realizaSaque(Conta& conta) {
-	conta.sacar(20);
+	std::variant<Conta::ResultadoSaque, float> resultado = conta.sacar(20);
+	if ( auto saldo = std::get_if<float>(&resultado) ) {	// se o resultado tiver um float, sinal de que ele retorna um valor float
+		cout << "Novo saldo da conta: " << *saldo << endl;
+	}
 }
 
 void fazLogin(Autenticavel& alguem, string senha) {
@@ -25,28 +29,36 @@ void fazLogin(Autenticavel& alguem, string senha) {
 	}
 }
 
+ostream& operator<<(ostream& cout, const Conta& conta) {
+	Pessoa titular = conta.titular;
+	cout << "O saldo da conta (operador) eh " << conta.recuperaSaldo() << endl;
+	cout << "O titular da conta eh " << titular.recuperaNome() << endl << endl;
+
+	return cout;
+}
+
 int main()
 {
 	Titular umTitular(Cpf("01234567899"), "Marcio", "umasenha");
-	ContaPoupanca umaConta("00001", umTitular);
-	//realizaSaque(umaConta);
-	cout << "Saldo conta poupanca " << endl;
-	umaConta.exibeDadosConta();
+	ContaCorrente umaConta("00001", umTitular);
+	umaConta.depositar(1000);
+	realizaSaque(umaConta);
+	//cout << umaConta;
 
 	ContaCorrente umaOutraConta("00002", Titular(Cpf("9876543210"), "Joseph", "outrasenha"));
 	cout << "Depositando 300 na corrente" << endl;
 	umaOutraConta.depositar(300);
-	cout << "Saldo conta corrente " << endl;
-	umaOutraConta.exibeDadosConta();
+	cout << "Depositando +300 na corrente" << endl;
+	(Conta&)umaOutraConta += 300;	// operator overload + casting
+
+	cout << umaOutraConta;
 
 	cout << "Transferindo 250 de corrente pra poupanca" << endl;
 	umaOutraConta.transferePara(umaConta, 250);
 
-	cout << "Saldo conta corrente " << endl;
-	umaOutraConta.exibeDadosConta();
+	cout << umaOutraConta;
 
-	cout << "Saldo conta poupanca " << endl;
-	umaConta.exibeDadosConta();
+	cout << umaConta;
 
 	// passando uma string pro construtor de Cpf (conversão implícita)
 	// para evitar, usar : explicit Cpf(std::string numero);
@@ -62,7 +74,12 @@ int main()
 		DiaDaSemana::Terca, 
 		"senhagerente"
 	);
-	cout << "Nome do gerente: " << gerente.recuperaNome() << endl;
+	cout << "Nome do gerente: " << gerente.recuperaNome() << endl << endl << endl;
+
+	ContaCorrente outraContaCorrente("762576", umTitular);
+	outraContaCorrente += umaOutraConta;
+	cout << umaOutraConta;
+	cout << outraContaCorrente;
 
 	return 0;
 }

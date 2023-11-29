@@ -12,7 +12,14 @@ float ContaCorrente::taxaDeSaque() const {
 
 void ContaCorrente::transferePara(Conta& destino, float valor)
 {
-	sacar(valor);
-	destino.depositar(valor);
+	auto resultado = sacar(valor);
+	if (resultado.index() == 1) {	// se for igual a 1, é o saldo
+		destino.depositar(valor);
+	}
+}
+
+void ContaCorrente::operator+=(ContaCorrente& contaOrigem)
+{
+	contaOrigem.transferePara(*this, contaOrigem.recuperaSaldo() / 2);
 }
 
